@@ -12,6 +12,31 @@ The API accepts 3 parameters to control the result:
 
 To calculate cost, the endpoint uses the PRO pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
 
+## Prerequisites
+Here we assume you already have a Tinybird account and know where to find an authentication token. If that is not the case, you can get started [HERE)().
+
+We also assume that you have created a Tinybird Data Source, and likely have a curated pipe processing data. And hopefully, you have published an API Endpoint and are in a place where you need to monitor requests, data processing, and storage space.  
+
+## Setting up your billing endpoint
+There are two ways to create the "tinybird_billing" Pipe and API Endpoint: using the UI or the command-line tool. 
+
+### Creating the billing endpoint with the CLI
+
+### Creating the billing endpoint with the UI
+This method takes about ten minutes and is a great way to better understand how Pipes and Nodes work. 
+
+#### cost_variables
+
+#### ingested_data
+
+#### produced_data
+
+
+
+
+
+
+
 ## Working with the Tinybird CLI
 
 To start working with data projects as if they were software projects, first install the Tinybird CLI in a virtual environment.
