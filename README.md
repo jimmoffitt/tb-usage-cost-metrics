@@ -1,8 +1,6 @@
 # Usage and Cost in Tinybird
 
-{intro to pricing}
-
-This data project contains an API endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all data sources and pipes in your Tinybird workspace.
+This data project contains an API Endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources and Pipes in your Tinybird Workspace.
 
 The endpoint returns the total processed and stored data:
 - Data processed on ingestion from `tinybird.datasources_ops_log`
@@ -10,8 +8,8 @@ The endpoint returns the total processed and stored data:
 - Data stored from `tinybird.datasources_storage`
 
 The API accepts 3 parameters to control the result:
-- `start_date` and `end_date` to filter the date range (default to yesterday and today, respectively, if either is not defined)
-- `resources` to filter on one or more data source or pipe (defaults to all if not defined)
+- `start_date` and `end_date` to filter the date range (default to the start of the month and today, respectively, if either is not defined)
+- `resources` to filter on one or more Data Source or Pipe (defaults to all if not defined). 
 
 To calculate cost, the endpoint uses the PRO pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
 
