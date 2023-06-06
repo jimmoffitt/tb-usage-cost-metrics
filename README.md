@@ -1,22 +1,27 @@
 # Usage and Cost in Tinybird
 
-This data project contains an API Endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources and Pipes in your Tinybird Workspace.
+## Introduction
+
+This data project contains a ```tb-usage_cost``` API endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics drive those estimates. 
 
 The endpoint returns the total processed and stored data:
-- Data processed on ingestion from `tinybird.datasources_ops_log`
-- Data processed on API requests from `tinybird.pipe_stats`
-- Data stored from `tinybird.datasources_storage`
+- Data written to Data Sources and Materialized Views from `tinybird.datasources_ops_log`
+- Data read to generate API Endpoint responses from `tinybird.pipe_stats`
+- Data stored in your Data Sources and Materialized Views from `tinybird.datasources_storage`
 
-The API accepts 3 parameters to control the result:
-- `start_date` and `end_date` to filter the date range (default to the start of the month and today, respectively, if either is not defined)
-- `resources` to filter on one or more Data Source or Pipe (defaults to all if not defined). 
+The API Endpoint accepts three query parameters to customize your request:
+- `start_date` and `end_date` to customize the date range. By default, the API Endpoint returns data for the current month by setting the `start_time` to first day of the month, and `end_date` to today. These are useful to also look at periods of interest, such as when you are adding new Data Sources and API Endpoint features. 
+- `resources` to filter on one or more Data Source or Pipe. Defaults to *all* if not defined. Multiple items should be comma-delimted. 
 
-To calculate cost, the endpoint uses the PRO pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
+To calculate cost, the API Endpoint uses the [Professional](https://www.tinybird.co/docs/billing/plans-and-pricing.html#professional) pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
 
-## Prerequisites
-Here we assume you already have a Tinybird account and know where to find an authentication token. If that is not the case, you can get started [HERE)(https://www.tinybird.co/docs).
+## Getting started
+As described in the [Tinybird documentation](https://www.tinybird.co/docs/billing/plans-and-pricing.html), pricing is driven by the amount of compressed data stored and the amount of data processed. Processed data includes the amount of data written to Data Sources and Materialized Views, and the amount of data read to generate API responses and to serve Query API requests.   
 
-We also assume that you have created a Tinybird Data Source, and likely have a curated pipe processing data. And hopefully, you have published an API Endpoint and are in a place where you need to monitor requests, data processing, and storage space.  
+
+First, it is assumed that you already have a Tinybird account and know where to find an authentication token. If that is not the case, you can get started [HERE)(https://www.tinybird.co/docs).
+
+Second, it is also assumed that you have created a Tinybird Data Source, and likely have a curated Pipe processing data. And hopefully, you have published an API Endpoint and are in a place where you need to monitor requests, data processing, and storage space.
 
 ## Setting up your billing endpoint
 There are two ways to create the "tinybird_billing" Pipe and API Endpoint: using the user interface (UI) or the command-line interface (CLI) tool. Using the CLI is the quickest method. Another advantage of using the CLI is that you will automatically end up with a Pipe and Nodes with descriptions that describe how they work.
