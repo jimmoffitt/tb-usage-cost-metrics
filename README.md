@@ -32,9 +32,10 @@ With the UI, it is a manual process of creating a Pipe, and copying and pasting 
 ### Creating the billing endpoint with the CLI
 
 Here are the steps:
-* The `tb_usage_cost.pipe` file (in the /endpoints project folder) contains the Pipe definition. 
-* Start up the CLI 
-
+* The `tb_usage_cost.pipe` file (in the /endpoints project folder) contains the Pipe definition. Either clone this repository or copy the contents of this file to your local environment. 
+* Navigate to the location of this file. 
+* Start up the CLI and authorize with a Tinybird Token associated with the Workspace you want to update (```tb auth```).  
+* Use ```tb push``` to load the ```tb_usage_cost``` Pipe into your Workspace. 
 
 
 ### Creating the billing endpoint with the UI
