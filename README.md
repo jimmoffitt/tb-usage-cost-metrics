@@ -173,36 +173,3 @@ ORDER BY total_cost desc
 
 
 
-
-## Working with the Tinybird CLI
-
-To start working with data projects as if they were software projects, first install the Tinybird CLI in a virtual environment.
-Check the [CLI documentation](https://docs.tinybird.co/cli.html) for other installation options and troubleshooting.
-
-```bash
-python3 -mvenv .e
-. .e/bin/activate
-pip install tinybird-cli
-tb auth --interactive
-```
-
-Choose your region: __1__ for _us-east_, __2__ for _eu_
-
-Go to your workspace, copy a token with admin rights and paste it. A new `.tinyb` file will be created.
-
-
-## Project Description
-
-```bash
-├── endpoints
-│   └── tb_usage_cost.pipe
-```
-
-In the `/endpoints` folder, there is 1 API endpoint:
-- `tb_usage_cost` returns the usage and cost for a given date range and resource(s).
-
-Push the data project to your workspace:
-
-```bash
-tb push
-```
