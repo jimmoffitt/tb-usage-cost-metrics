@@ -1,12 +1,13 @@
 # Usage and Cost in Tinybird
 
 ## Introduction
+As described in the [Tinybird documentation](https://www.tinybird.co/docs/billing/plans-and-pricing.html), pricing is driven by the amount of compressed data stored and the amount of data processed. Processed data includes the amount of data written to Data Sources and Materialized Views, and the amount of data read to generate API responses and serve Query API requests.   
 
-This data project contains a ```tb-usage_cost``` API endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics drive those estimates. 
+This data project contains a ```tb-usage-cost``` API endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources, Materialized Views, and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics that drive those estimates. 
 
 The endpoint returns the total processed and stored data:
 - Data written to Data Sources and Materialized Views from `tinybird.datasources_ops_log`
-- Data read to generate API Endpoint responses from `tinybird.pipe_stats`
+- Data read to generate API Endpoint responses and serve Query API requests from `tinybird.pipe_stats`
 - Data stored in your Data Sources and Materialized Views from `tinybird.datasources_storage`
 
 The API Endpoint accepts three query parameters to customize your request:
@@ -16,18 +17,17 @@ The API Endpoint accepts three query parameters to customize your request:
 To calculate cost, the API Endpoint uses the [Professional](https://www.tinybird.co/docs/billing/plans-and-pricing.html#professional) pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
 
 ## Getting started
-As described in the [Tinybird documentation](https://www.tinybird.co/docs/billing/plans-and-pricing.html), pricing is driven by the amount of compressed data stored and the amount of data processed. Processed data includes the amount of data written to Data Sources and Materialized Views, and the amount of data read to generate API responses and serve Query API requests.   
 
-It is assumed that you already have a Tinybird account and know where to find an authentication token. If that is not the case, you can get started [HERE](https://www.tinybird.co/docs). 
+First, it is assumed that you already have a Tinybird account and know where to find an authentication token. If that is not the case, you can get started [HERE](https://www.tinybird.co/docs). 
 
-It is also assumed that you have created a Tinybird Data Source, and likely have a curated Pipe processing data. And probably, you have published an API Endpoint and are in a place where you need to monitor requests, data processing, and storage space.
+Second, it is also assumed that you have created a Tinybird Data Source, and likely have a curated Pipe processing data. And probably, you have published an API Endpoint and are in a place where you need to monitor requests, data processing, and storage space.
 
-For the quickest deployment of the billing API Endpoint, you should have the Tinybird CLI installed and ready to go. See the [CLI Quick Start](https://www.tinybird.co/docs/quick-start-cli.html) documentation. If you prefer to not use the CLI, the API Endpoint can be created with the Tinybird user-interface by manually creating a Pipe and five Nodes. See below for instructions for both methods. 
+For the quickest deployment of the billing API Endpoint, you should have the Tinybird CLI installed and ready to go. See the [CLI Quick Start](https://www.tinybird.co/docs/quick-start-cli.html) documentation for more details. If you prefer to not use the CLI, the API Endpoint can be created with the Tinybird user-interface by manually creating a Pipe and five Nodes. See below for instructions for both methods. 
 
 ## Setting up your billing endpoint
-There are two ways to create the "tinybird_billing" Pipe and API Endpoint: using the user interface (UI) or the command-line interface (CLI) tool. Using the CLI is the quickest method. Another advantage of using the CLI is that you will automatically end up with a Pipe and Nodes with descriptions that describe how they work.
+There are two ways to create the "tinybird_billing" Pipe and API Endpoint: using the CLI or the UI. Using the CLI is the recommended method. It is quicker, and includes detailed descriptions of how the Pipe and Nodes work.
 
-Creating the Pipe with the UI is a manual process of copying and pasting three Nodes (see below), and likely about 10 minutes to set up. If you are brand new to Tinybird, manually building the Pipe is a great way to explore how Pipes and API Endpoints work.   
+With the UI, it is a manual process of creating a Pipe, and copying and pasting the Nodes that define it. This process will take about 10 minutes. If you are brand new to Tinybird, manually building the Pipe is a way to explore how Pipes and API Endpoints work.   
 
 ### Creating the billing endpoint with the CLI
 
