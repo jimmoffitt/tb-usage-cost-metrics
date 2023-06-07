@@ -53,6 +53,7 @@ This method takes around ten minutes and is a way to better understand how Pipes
 
 * **Create Nodes**
   * Copy the Node content from below and paste it into the Node editor box. After updating the Node contents, press the ```Run``` button and see the results. 
+  * You can also copy/paste the Node descriptions from below into the Node UI to help explain what the Node does. 
   * Repeat for this process for each Node, in the order below.    
 
 * **Publishing the ```tb_usage_cost``` API Endpoint**
@@ -61,7 +62,7 @@ This method takes around ten minutes and is a way to better understand how Pipes
 
 ## Nodes 
 
-The ```tb_usage_cost``` Pipe contains the following Nodes, defined in the following order. All of these are defined in the ```tb_usage_cost.pipe``` file.
+The ```tb_usage_cost``` Pipe contains these Nodes, defined in the following order. All of these are defined in the ```tb_usage_cost.pipe``` file.
 
 ### cost_variables
 
