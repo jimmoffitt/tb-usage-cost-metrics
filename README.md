@@ -3,7 +3,7 @@
 ## Introduction
 As described in the [Tinybird documentation](https://www.tinybird.co/docs/billing/plans-and-pricing.html), pricing is driven by the amount of compressed data stored and the amount of data processed. Processed data includes the amount of data written to Data Sources and Materialized Views, and the amount of data read to generate API responses and serve Query API requests.   
 
-This data project contains a ```tb-usage-cost``` API endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources, Materialized Views, and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics that drive those estimates. 
+This data project contains a ```tb-usage-cost``` API Endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources, Materialized Views, and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics that drive those estimates. 
 
 The endpoint returns the total processed and stored data:
 - Data written to Data Sources and Materialized Views from `tinybird.datasources_ops_log`
@@ -75,7 +75,7 @@ SELECT
 
 ### processed_ingest
 
-Retrieves the amount of processed data associated with writing/ingesting data to Data Sources. This includes when you create, append, delete or replace data in a Data Source. This also includes the data written to Materialized Views *after*  they are created. There is no charge when you first create and populate a Materialized View, only incremental updates are billed.
+Retrieves from the ```tinybird.datasources_ops_log``` Service Data Source the amount of processed data associated with writing/ingesting data to Data Sources. This includes when you create, append, delete or replace data in a Data Source. This also includes the data written to Materialized Views *after*  they are created. There is no charge when you first create and populate a Materialized View, only incremental updates are billed.
 
 By default this Node provides totals for the month-to-date.
 
@@ -102,7 +102,7 @@ By default this Node provides totals for the month-to-date.
 ```
 
 ### processed_APIs
-Retrieves the amount of processed data associated with reading data from Data Sources. You read data when you run queries against your Data Sources to generate responses to API Endpoint requests. You also read data when you make requests to the Query API.
+Retrieves from tht ```tinybird.pipe_stats``` Service Data Source the daily amount of processed data associated with reading data from Data Sources. You read data when you run queries against your Data Sources to generate responses to API Endpoint requests. You also read data when you make requests to the Query API.
 
 A reminder that manually executing a query inside the Tinybird UI is free. This means that you can develop, experiment and iterate inside the Tinybird UI without incurring additional cost.
 
@@ -129,9 +129,9 @@ SELECT
 
 ### storage
 
-Data storage refers to the disk storage of all the data you keep in Tinybird. This includes all of your Data Sources and Materialized Views, and well as any quarantined data. Data storage pricing is based on the amount of storage used after compression. 
+Retrieves from the ``` tinybird.datasources_storage``` Service Data Source the maximum amount of storage from the previos day. Data storage refers to the disk storage of all the data you keep in Tinybird. This includes all of your Data Sources and Materialized Views, and well as any quarantined data. Data storage pricing is based on the amount of storage used after compression. 
 
-For billing, a measurement of this storage is made at the end of every month. This Node queries for the maximum amount of stored data over the previous day by default. The maximum storage can be queried using the `start_date` and `end_date` parameters.
+For billing, a measurement of this storage is made at the end of every month. This Node queries for the maximum amount of stored data over the previous day by default. The maximum storage over a different period can be queried using the `start_date` and `end_date` parameters.
 ```sql
 %
     SELECT
@@ -165,7 +165,7 @@ For billing, a measurement of this storage is made at the end of every month. Th
 ```
 ### endpoint
 
-This Node calculates the estimated stored and processed data costs for each Data Sources, Materialize Views, and Pipes, as well as any Query API usages. To estimate total cost for the selected data range (defaults to month-to-date), you need to add all the ```total_cost``` values.
+This Node compiles results from the previous Nodes and calculates the estimated stored and processed data costs for each Data Sources, Materialize Views, and Pipes, as well as any Query API usages. To estimate total cost for the selected data range (defaults to month-to-date), you need to add all the ```total_cost``` values.
 
 ```sql
 WITH
