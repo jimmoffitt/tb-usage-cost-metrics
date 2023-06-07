@@ -2,9 +2,9 @@ TOKEN tb_usage_read READ
 
 DESCRIPTION >
 	Creates an API Endpoint that provides information on usage and billing:
-	[https://api.tinybird.co/v0/pipes/tinybird_billing.json](https://api.tinybird.co/v0/pipes/tinybird_billing.json).
+	[https://api.tinybird.co/v0/pipes/tinybird_billing.json](https://api.tinybird.co/v0/pipes/tinybird_billing.json).  
 
-	By default this Pipe/Endpoint will provide totals for the month-to-date, and `start_date` and `end_date` query parameters are available to select a different date range.
+	By default this Pipe/Endpoint will provide totals for the month-to-date, and `start_date` and `end_date` query parameters are available to select a different date range.  
 
 	This Pipe is made of four Nodes: 1) `cost_variables`, 2) `processed_ingest`, 3) `processed_APIs`, 4) `storage`, and 5) `endpoint`. See below for descriptions of these Nodes.
 
@@ -22,7 +22,7 @@ SQL >
 
 NODE processed_ingest
 DESCRIPTION >
-    Retrieves from the ```tinybird.datasources_ops_log``` Service Data Source the amount of processed data associated with writing/ingesting data to Data Sources. This includes when you create, append, delete or replace data in a Data Source. This also includes the data written to Materialized Views *after*  they are created. There is no charge when you first create and populate a Materialized View, only incremental updates are billed.
+    Retrieves from the ```tinybird.datasources_ops_log``` Service Data Source the amount of processed data associated with writing/ingesting data to Data Sources. This includes when you create, append, delete or replace data in a Data Source. This also includes the data written to Materialized Views *after*  they are created. There is no charge when you first create and populate a Materialized View, only incremental updates are billed.  
 
     By default this Node provides totals for the month-to-date.
 
@@ -52,9 +52,9 @@ SQL >
 
 NODE processed_APIs
 DESCRIPTION >
-    Retrieves from tht ```tinybird.pipe_stats``` Service Data Source the daily amount of processed data associated with reading data from Data Sources. You read data when you run queries against your Data Sources to generate responses to API Endpoint requests. You also read data when you make requests to the Query API.
+    Retrieves from tht ```tinybird.pipe_stats``` Service Data Source the daily amount of processed data associated with reading data from Data Sources. You read data when you run queries against your Data Sources to generate responses to API Endpoint requests. You also read data when you make requests to the Query API.  
 
-    A reminder that manually executing a query inside the Tinybird UI is free. This means that you can develop, experiment and iterate inside the Tinybird UI without incurring additional cost.
+    A reminder that manually executing a query inside the Tinybird UI is free. This means that you can develop, experiment and iterate inside the Tinybird UI without incurring additional cost.  
 
     By default this Node provides totals for the month-to-date.
 
