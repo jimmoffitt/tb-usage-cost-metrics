@@ -3,7 +3,7 @@
 ## Introduction
 As described in the [Tinybird documentation](https://www.tinybird.co/docs/billing/plans-and-pricing.html), pricing is driven by the amount of compressed data stored and the amount of data processed. Processed data includes the amount of data written to Data Sources and Materialized Views, and the amount of data read to generate API responses and serve Query API requests.   
 
-This data project contains a ```tb-usage-cost``` API Endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources, Materialized Views, and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics that drive those estimates. 
+This data project contains a ```tb-usage-cost``` API Endpoint that utilizes the [Service Data Sources](https://www.tinybird.co/docs/monitoring/service-datasources.html) to estimate the total usage and cost of all Data Sources, Materialized Views, and Pipes in your Tinybird Workspace. With this project, you can quickly create an endpoint that returns billing estimates and measures the metrics that drive those estimates. Note that there are no storage or processed data billing associated with these Data Sources or API Endpoint responses. 
 
 The endpoint returns the total processed and stored data:
 - Data written to Data Sources and Materialized Views from `tinybird.datasources_ops_log`
