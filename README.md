@@ -33,32 +33,33 @@ With the UI, it is a manual process of creating a Pipe, and copying and pasting 
 
 Creating the endpoint with the CLI involves creating a Pipe with multiple Nodes, then publishing the API Endpoint with the UI. 
 
-* Add the ```tb_usage_cost``` Pipe in your Workspace
+* **Add the ```tb_usage_cost``` Pipe in your Workspace
   * The `tb_usage_cost.pipe` file (in the /endpoints project folder) contains the Pipe definition. Either clone this repository or copy the contents of this file to your local environment. 
   * Navigate to the location of this file. 
   * Start up the CLI and authorize with a Tinybird Token associated with the Workspace you want to update (```tb auth```).  
   * Use ```tb push``` to load the ```tb_usage_cost``` Pipe into your Workspace. 
   * Navigate to your Workspace and check for the ```tb_usage_cost``` Pipe and take a tour of the Nodes.  
 
-* Publishing the ```tb_usage_cost``` API Endpoint
+* **Publishing the ```tb_usage_cost``` API Endpoint
   * Select the ```tb_usage_cost``` Pipe and click on the "Create API Endpoint" button and select the ```endpoint``` Node. 
   * That's it. The endpoint is now available at https://api.tinybird.co/v0/pipes/tb_usage_cost.json.
   
 ## Creating the billing endpoint with the UI
-This method takes around ten minutes and is a great way to better understand how Pipes and Nodes work. The first step is creating a new Pipe, then setting up a sequence of five Nodes. 
+This method takes around ten minutes and is a way to better understand how Pipes and Nodes work. The first step is creating a new Pipe, setting up a sequence of five Nodes, and publishing the API Endpoint. 
 
-* Create the ```tb_usage_cost``` Pipe in your Workspace
+* **Create the ```tb_usage_cost``` Pipe in your Workspace
 
-* Create Nodes
+* **Create Nodes
 
-* Publishing the ```tb_usage_cost``` API Endpoint
-
-
-
+* **Publishing the ```tb_usage_cost``` API Endpoint
+  * Select the ```tb_usage_cost``` Pipe and click on the "Create API Endpoint" button and select the ```endpoint``` Node. 
+  * That's it. The endpoint is now available at https://api.tinybird.co/v0/pipes/tb_usage_cost.json.
 
 ## Nodes 
 
-#### cost_variables
+The ```tb_usage_cost``` Pipe contains the following Nodes, defined in the following order. 
+
+### cost_variables
 
 This Node sets two contants for the Tinybird prices for stored and processed data per gigabyte (GB). Details are available here: [tinybird.co/pricing](https://www.tinybird.co/pricing) and [tinybird.co/docs/billing/plans-and-pricing](https://www.tinybird.co/docs/billing/plans-and-pricing.html).
 
@@ -68,7 +69,7 @@ SELECT
     0.34 AS price_per_stored_gb
 ```
 
-#### processed_ingest
+### processed_ingest
 
 Retrieves the amount of processed data associated with writing/ingesting data to Data Sources. This includes when you create, append, delete or replace data in a Data Source. This also includes the data written to Materialized Views *after*  they are created. There is no charge when you first create and populate a Materialized View, only incremental updates are billed.
 
@@ -96,7 +97,7 @@ By default this Node provides totals for the month-to-date.
         GROUP BY resource, resource_type
 ```
 
-#### processed_APIs
+### processed_APIs
 Retrieves the amount of processed data associated with reading data from Data Sources. You read data when you run queries against your Data Sources to generate responses to API Endpoint requests. You also read data when you make requests to the Query API.
 
 A reminder that manually executing a query inside the Tinybird UI is free. This means that you can develop, experiment and iterate inside the Tinybird UI without incurring additional cost.
@@ -122,7 +123,7 @@ SELECT
         GROUP BY resource, resource_type
 ```
 
-#### storage
+### storage
 
 Data storage refers to the disk storage of all the data you keep in Tinybird. This includes all of your Data Sources and Materialized Views, and well as any quarantined data. Data storage pricing is based on the amount of storage used after compression. 
 
@@ -158,7 +159,7 @@ For billing, a measurement of this storage is made at the end of every month. Th
     GROUP BY month, resource, resource_type
     ORDER BY resource, month desc
 ```
-#### endpoint
+### endpoint
 
 This Node calculates the estimated stored and processed data costs for each Data Sources, Materialize Views, and Pipes, as well as any Query API usages. To estimate total cost for the selected data range (defaults to month-to-date), you need to add all the ```total_cost``` values.
 
