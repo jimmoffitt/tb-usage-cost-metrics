@@ -33,31 +33,35 @@ With the UI, it is a manual process of creating a Pipe, and copying and pasting 
 
 Creating the endpoint with the CLI involves creating a Pipe with multiple Nodes, then publishing the API Endpoint with the UI. 
 
-* **Add the ```tb_usage_cost``` Pipe in your Workspace
+* **Add the ```tb_usage_cost``` Pipe in your Workspace**
   * The `tb_usage_cost.pipe` file (in the /endpoints project folder) contains the Pipe definition. Either clone this repository or copy the contents of this file to your local environment. 
   * Navigate to the location of this file. 
   * Start up the CLI and authorize with a Tinybird Token associated with the Workspace you want to update (```tb auth```).  
   * Use ```tb push``` to load the ```tb_usage_cost``` Pipe into your Workspace. 
   * Navigate to your Workspace and check for the ```tb_usage_cost``` Pipe and take a tour of the Nodes.  
 
-* **Publishing the ```tb_usage_cost``` API Endpoint
+* **Publishing the ```tb_usage_cost``` API Endpoint**
   * Select the ```tb_usage_cost``` Pipe and click on the "Create API Endpoint" button and select the ```endpoint``` Node. 
   * That's it. The endpoint is now available at https://api.tinybird.co/v0/pipes/tb_usage_cost.json.
   
 ## Creating the billing endpoint with the UI
 This method takes around ten minutes and is a way to better understand how Pipes and Nodes work. The first step is creating a new Pipe, setting up a sequence of five Nodes, and publishing the API Endpoint. 
 
-* **Create the ```tb_usage_cost``` Pipe in your Workspace
+* **Create the ```tb_usage_cost``` Pipe in your Workspace**
+  * Select the Pipes "+" icon to create a new Pipe.
+  * Rename the Pipe to ```tb_usage_cost```, or name it to what you prefer.
 
-* **Create Nodes
+* **Create Nodes**
+  * Copy the Node content from below and paste it into the Node editor box. After updating the Node contents, press the ```Run``` button and see the results. 
+  * Repeat for this process for each Node, in the order below.    
 
-* **Publishing the ```tb_usage_cost``` API Endpoint
+* **Publishing the ```tb_usage_cost``` API Endpoint**
   * Select the ```tb_usage_cost``` Pipe and click on the "Create API Endpoint" button and select the ```endpoint``` Node. 
   * That's it. The endpoint is now available at https://api.tinybird.co/v0/pipes/tb_usage_cost.json.
 
 ## Nodes 
 
-The ```tb_usage_cost``` Pipe contains the following Nodes, defined in the following order. 
+The ```tb_usage_cost``` Pipe contains the following Nodes, defined in the following order. All of these are defined in the ```tb_usage_cost.pipe``` file.
 
 ### cost_variables
 
