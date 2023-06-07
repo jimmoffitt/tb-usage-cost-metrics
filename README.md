@@ -11,7 +11,7 @@ The endpoint returns the total processed and stored data:
 - Data stored in your Data Sources and Materialized Views from `tinybird.datasources_storage`
 
 The API Endpoint accepts three query parameters to customize your request:
-- `start_date` and `end_date` to customize the date range. By default, the API Endpoint returns data for the current month by setting the `start_time` to first day of the month, and `end_date` to today. These are useful to also look at periods of interest, such as when you are adding new Data Sources and API Endpoint features. 
+- `start_date` and `end_date` to customize the date range, using the "YYYY-MM-DD" format. By default, the API Endpoint returns data for the current month by setting the `start_time` to first day of the month, and `end_date` to today. These are useful to also look at periods of interest, such as when you are adding new Data Sources and API Endpoint features. 
 - `resources` to filter on one or more Data Source or Pipe. Defaults to *all* if not defined. Multiple items should be comma-delimted. 
 
 To calculate cost, the API Endpoint uses the [Professional](https://www.tinybird.co/docs/billing/plans-and-pricing.html#professional) pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
