@@ -24,6 +24,8 @@ Second, it is also assumed that you have created a Tinybird Data Source, and lik
 
 For the quickest deployment of the billing API Endpoint, you should have the Tinybird CLI installed and ready to go. See the [CLI Quick Start](https://www.tinybird.co/docs/quick-start-cli.html) documentation for more details. If you prefer to not use the CLI, the API Endpoint can be created with the Tinybird user-interface by manually creating a Pipe and five Nodes. See below for instructions for both methods. 
 
+If you want a quick look at how this API Endpoint works, check out its auto-generated [documentation](https://api.tinybird.co/endpoint/t_5d13bfba54df4293a0c6770bcad4fa49?token=p.eyJ1IjogIjIzYjc5ZGVlLWFmNmItNDNjNS1hNWViLTkzYjNjNzE3ZTdiOCIsICJpZCI6ICI3MDZlNDY2OS0wZjM4LTQ4YzEtOGY1Yi01NmIzMWU4ZDEzOWQifQ.-Da0O8pJ7PcA2HzSahXpVwe2ZIdAHfnYjgtxs6MO6iQ). 
+
 ### Setting up your billing endpoint
 There are two ways to create the ```tb_usage_cost``` Pipe and API Endpoint: using the CLI or the UI. Using the CLI is the recommended method. It is quicker, and includes detailed descriptions of how the Pipe and Nodes work.
 
