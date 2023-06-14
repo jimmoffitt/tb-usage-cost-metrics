@@ -16,6 +16,23 @@ The API Endpoint accepts three query parameters to customize your request:
 
 To calculate cost, the API Endpoint uses the [Professional](https://www.tinybird.co/docs/billing/plans-and-pricing.html#professional) pricing as listed on the [website](https://www.tinybird.co/pricing). For enterprise customers, Tinybird offers volume-based discounts. 
 
+For any Tinybird object that affects the monthly bill, the following JSON object is provided in the API Endpoint response:
+
+```json
+{
+	"resource": "reports",
+	"resource_type": "pipe",
+	"resource_processed_cost": 28.256,
+	"resource_stored_cost": 0,
+	"resource_total_cost": 28.356,
+	"gb_read": 1106.0256384,
+	"gb_written": 0,
+	"gb_stored": 0
+}
+
+```
+
+
 ## Getting started
 
 First, it is assumed that you already have a Tinybird account and know where to find an authentication token. If that is not the case, you can get started [HERE](https://www.tinybird.co/docs). 
@@ -61,6 +78,9 @@ This method takes around ten minutes and is a way to better understand how Pipes
 * **Publishing the ```tb_usage_cost``` API Endpoint**
   * Select the ```tb_usage_cost``` Pipe and click on the "Create API Endpoint" button and select the ```endpoint``` Node. 
   * That's it. The endpoint is now available at https://api.tinybird.co/v0/pipes/tb_usage_cost.json.
+
+
+
 
 ## Nodes 
 
